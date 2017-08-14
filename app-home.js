@@ -104,7 +104,7 @@ function init() {
             
             // Access based on user role
             if(user.uid) {
-                if(user.uid === "ADer5kHfQXhWklAsh4JD7X4s60K2") {
+                if(user.uid === "ADer5kHfQXhWklAsh4JD7X4s60K2" || user.uid === "ENDok6TGTHRECmsVOMPPWr6mWMZ2") {
                     $(".admin-access").show();
                     $("#user-uid").text("HR")
                 } else if(user.uid === "fCfJltTxY6R4eyZj1YWeP408B172") {
