@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<!--[if lte IE 6]><html class="preIE7 preIE8 preIE9"><![endif]-->
+<!--[if IE 7]><html class="preIE8 preIE9"><![endif]-->
+<!--[if IE 8]><html class="preIE9"><![endif]-->
+<!--[if gte IE 9]><!--><html><!--<![endif]-->
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>WCCA Employee Portal</title>
+    <meta name="author" content="name">
+    <meta name="description" content="description here">
+    <meta name="keywords" content="keywords,here">
+    <script src="https://www.gstatic.com/firebasejs/live/4.1/firebase.js"></script>
+    <script src="config.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="style.css" type="text/css" rel="stylesheet">
+  </head>
+  <body>
+    
+    <!-- DASHBOARD -->
+    <div class="dashboard">
+      <div class="pageHeader">
+        <div class="title">WCCA Employee Portal</div>
+        <div class="userPanel">
+          <i id="logout" class="glyphicon glyphicon-off"></i>
+          <i></i><span class="username"> </span>
+        </div>
+      </div>
+      
+      <div class="main">
+        <div class="nav">
+          <div class="menu">
+            <div id="user-uid" class="title"></div>
+            <ul role="tablist">
+              <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-home"></i> Home</a></li>
+              <li role="presentation"><a href="#wellness" aria-controls="wellness" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-apple"></i> Employee Wellness Program</a></li>
+              <li role="presentation"><a href="#benefits" aria-controls="benefits" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-usd"></i> Pay &amp; Benefits</a></li>
+              <li role="presentation"><a href="#internal" aria-controls="internal" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-briefcase"></i> Internal Job Postings</a></li>
+              <li role="presentation"><a href="#policies" aria-controls="policies" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-th-list"></i> Personnel Policies</a></li>
+              <li role="presentation"><a href="#new" aria-controls="new" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-user"></i> New Employees</a></li>
+              <li role="presentation"><a href="#resources" aria-controls="resources" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-folder-close"></i> Employee Resources</a></li>
+              <li role="presentation"><a href="#leadership" aria-controls="leadership" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-bullhorn"></i> Leadership Resources</a></li>
+              <li role="presentation"><a href="#mission" aria-controls="mission" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-certificate"></i> Mission, Vision &amp; Values</a></li>
+              <li role="presentation"><a href="#documents" aria-controls="documents" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-file"></i> Forms &amp; Documents</a></li>
+              <li class="admin-access" role="presentation"><a href="#admin" aria-controls="admin" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-cog"></i> Admin Settings</a></li>
+            </ul>
+      </div>
+    </div>
+    
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane fade in active" id="home">
+        <div class="view">
+          <div class="dash-hero">
+          </div>
+          
+          <div class="dash-content">
+            <div id="announcements-list"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div role="tabpanel" class="tab-pane fade" id="wellness">
+        <div class="view">
+          <div class="viewHeader">
+            <div class="title">Employee Wellness Program</div>
+          </div>
+          
+          <div class="content">
+          </div>
+        </div>
+      </div>
+      
+      <div role="tabpanel" class="tab-pane fade" id="benefits">
+        <div class="view">
+          <div class="viewHeader">
+            <div class="title">Pay & Benefits</div>
+          </div>
+          
+          <div class="content">
+            
+          </div>
+        </div>
+      </div>
+      
+      <div role="tabpanel" class="tab-pane fade" id="internal">
+        <div class="view">
+          <div class="viewHeader">
+            <div class="title">Internal Job Postings</div>
+          </div>
+          
+          <div class="content">
+            <div id="jobs-list"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div role="tabpanel" class="tab-pane fade" id="policies">
+        <div class="view">
+          <div class="viewHeader">
+            <div class="title">Personnel Policies</div>
+          </div>
+          
+          <div class="content">
+            
+          </div>
+        </div>
+      </div>
+      
+      <div role="tabpanel" class="tab-pane fade" id="new">
+        <div class="view">
+          <div class="viewHeader">
+            <div class="title">New Employees</div>
+          </div>
+          
+          <div class="content">
+            
+          </div>
+        </div>
+      </div>
+      
+      <div role="tabpanel" class="tab-pane fade" id="resources">
+        <div class="view">
+          <div class="viewHeader">
+            <div class="title">Employee Resources</div>
+          </div>
+          
+          <div class="content">
+            
+          </div>
+        </div>
+      </div>
+      
+      <div role="tabpanel" class="tab-pane fade" id="leadership">
+        <div class="view">
+          <div class="viewHeader">
+            <div class="title">Leadership Resources</div>
+          </div>
+          
+          <div class="content">
+            
+          </div>
+        </div>
+      </div>
+      
+      <div role="tabpanel" class="tab-pane fade" id="mission">
+        <div class="view">
+          <div class="viewHeader">
+            <div class="title">Mission, Vision & Values</div>
+          </div>
+          
+          <div class="content">
+          </div>
+        </div>
+      </div>
+      
+      <div role="tabpanel" class="tab-pane fade" id="documents">
+        <div class="view">
+          <div class="viewHeader">
+            <div class="title">Forms & Documents</div>
+          </div>
+          
+          <div class="content">
+            <div class="list">
+              <div class="title">Document List</div>
+              <ul id="documents-list"></ul>
+              <hr>
+              
+              <div class="file-upload admin-access">
+                <button class="file-upload-btn" type="button">Add File</button>
+                <div class="image-upload-wrap">
+                  <input class="file-upload-input" type='file'/>
+                  <div class="drag-text">
+                    <h3>Drag And Drop A File or Select Add File</h3>
+                  </div>
+                </div>
+                <progress value="0" max="100" id="progressbar"></progress>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div role="tabpanel" class="tab-pane fade admin-access" id="admin">
+        <div class="view">
+          <div class="viewHeader">
+            <div class="title">Admin</div>
+          </div>
+          
+          <div class="content">
+            
+            <div style="display:none;" class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <i class="glyphicon glyphicon-ok-sign">Successfully Added</i>
+          </div>
+            
+            <div class="list">
+              <div class="title">You can use this panel to edit, update, and delete content.</div>
+              
+              <h3>New Announcement</h3>
+              <div>
+                <input type="text" class="form-control margin15" id="title" placeholder="Title">
+                <textarea class="form-control margin15" rows="3" id="message" placeholder="Message"></textarea>
+                <button class="btn btn-default" id="announcements-submit">Submit</button>
+              </div>
+              
+              <h3>New Job Posting</h3>
+              <div>
+                <input type="text" class="form-control margin15" id="jobTitle" placeholder="Job Title">
+                <textarea class="form-control margin15" rows="3" id="jobDescription" placeholder="Job Description"></textarea>
+                <button class="btn btn-default" id="job-submit">Submit</button>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+    </div>
+  </div>
+</div>
+    
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="app-home.js"></script>
+  </body>
+</html>
