@@ -382,6 +382,7 @@ a:focus, a:hover {
 .main .nav .menu .title {
   font-weight: 700;
   font-size: 1.0em;
+  padding-left: 15px;
   text-transform: uppercase;
 }
 
@@ -671,9 +672,6 @@ a:focus, a:hover {
   padding: 60px 0;
 }
 
-.save {
-  display: none;
-}
 
 progress {
   -webkit-appearance: none;

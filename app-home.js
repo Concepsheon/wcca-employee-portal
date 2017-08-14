@@ -103,15 +103,17 @@ function init() {
             $(".username").text(user.email);
             
             // Access based on user role
-            if(user.uid !== "ADer5kHfQXhWklAsh4JD7X4s60K2" || user.uid !== "fCfJltTxY6R4eyZj1YWeP408B172") {
-                $("#user-uid").text("ID: " + user.uid.slice(0, 20));
-                $(".admin-access").hide();
-            } else if (user.uid === "fCfJltTxY6R4eyZj1YWeP408B172") {
-                $("#user-uid").text("Admin");
-                $(".admin-access").show();
-            } else if(user.uid === "ADer5kHfQXhWklAsh4JD7X4s60K2") {
-                $(".admin-access").show();
-                $("#user-uid").text("HR")
+            if(user.uid) {
+                if(user.uid === "ADer5kHfQXhWklAsh4JD7X4s60K2") {
+                    $(".admin-access").show();
+                    $("#user-uid").text("HR")
+                } else if(user.uid === "fCfJltTxY6R4eyZj1YWeP408B172") {
+                    $("#user-uid").text("Admin");
+                    $(".admin-access").show();
+                } else {
+                    $("#user-uid").text("ID: " + user.uid.slice(0, 20));
+                    $(".admin-access").hide();
+                }
             }
             
         } else {
@@ -141,7 +143,7 @@ function init() {
     
     // Display all uploads
     uploads.on("child_added", function(snap) {
-        var data = '<li><i class="glyphicon glyphicon-unchecked"></i><span><a target="_blank" href="'+ snap.val().url +'">' + snap.val().name +'</a></span><div class="info"><div class="button">Delete</div></div></li>';
+        var data = '<li><i class="glyphicon glyphicon-unchecked"></i><span><a target="_blank" href="'+ snap.val().url +'">' + snap.val().name +'</a></span></div></li>';
         $("#documents-list").append(data);
     });
     
