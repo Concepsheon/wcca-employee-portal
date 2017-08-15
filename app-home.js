@@ -124,8 +124,10 @@ function init() {
     });
     
     $("#announcements-submit").click(announcement);
-    $("#logout").click(handleSignOut);
     $("#job-submit").click(job);
+    
+    // Log out
+    $("#logout").click(handleSignOut);
     
     // File upload
     $(".file-upload-input").on("change", uploadFile);
@@ -135,15 +137,17 @@ function init() {
         $('.file-upload-input').trigger( 'click' );
     });
     
-    
     // Display all announcements
     announcements.on("value", function(snap) {
         var data = "";
+        var deleteData = "";
         snap.forEach(function(child) {
             data += '<div class="serviceBox"><div class="service-icon"><a href="#"><span><i class="glyphicon glyphicon-bullhorn"></i></span></a></div><div class="service-content"><h3>' + child.val().title + '</h3><p>' + child.val().message + '</p></div></div>';
+            deleteData += '<li><i class="glyphicon glyphicon-bullhorn"></i><span>' + child.val().title + '</span><div class="info"><div id=' + child.key + ' class="button">Delete</div></div></li>';
         });
         
         $("#announcements-list").html(data);
+        $("#announcement-list-delete").html(deleteData);
     });
     
     // Display all uploads
@@ -159,10 +163,14 @@ function init() {
     // Display all jobs
     jobs.on("value", function(snap) {
         var data = "";
+        var deleteData = "";
         snap.forEach(function(child) {
-            data = '<div class="serviceBox2"><div class="service-icon"><i class="glyphicon glyphicon-briefcase"></i></div><h3 class="title">' + child.val().title + '</h3><p class="description">' + child.val().descriptions + '</p></div>';
+            data += '<div class="serviceBox2"><div class="service-icon"><i class="glyphicon glyphicon-briefcase"></i></div><h3 class="title">' + child.val().title + '</h3><p class="description">' + child.val().descriptions + '</p></div>';
+            deleteData += '<li><i class="glyphicon glyphicon-briefcase"></i><span>' + child.val().title + '</span><div class="info"><div id=' + child.key + ' class="button">Delete</div></div></li>';
         });
+        
         $("#jobs-list").html(data);
+        $("#job-list-delete").html(deleteData);
     });
 }
 
