@@ -67,6 +67,22 @@ function removeJob() {
     }
 }
 
+function deleteUpload() {
+    var key = $(this).data('key');
+    if(confirm('Are you sure?')) {
+        uploads.child(key).remove();
+    }
+}
+
+// For better mobile display
+function truncate(str) {
+    if(str.length > 30) {
+     return str.substr(0,15) + "...";   
+    } else {
+        return str;
+    }
+}
+
 // File upload
 function uploadFile(e) {
     var bar = document.getElementById("progressbar");
@@ -154,6 +170,7 @@ function init() {
     // Delete functionality
     $(document).on('click', '.announcement', remove);
     $(document).on('click', '.job', removeJob);
+    $(document).on('click', '.doc', deleteUpload);
     
     // Display all announcements
     announcements.on("value", function(snap) {
@@ -161,7 +178,7 @@ function init() {
         var deleteData = "";
         snap.forEach(function(child) {
             data += '<div class="serviceBox"><div class="service-icon"><a href="#"><span><i class="glyphicon glyphicon-bullhorn"></i></span></a></div><div class="service-content"><h3>' + child.val().title + '</h3><p>' + child.val().message + '</p></div></div>';
-            deleteData += '<li><i class="glyphicon glyphicon-bullhorn"></i><span>' + child.val().title + '</span><div class="info"><a class="announcement" data-key=' + child.key + '>Delete</div></a></li>';
+            deleteData += '<li><i class="glyphicon glyphicon-bullhorn"></i><span>' + truncate(child.val().title) + '</span><div class="info"><a class="announcement button" data-key=' + child.key + '>Delete</div></a></li>';
         });
         
         $("#announcements-list").html(data);
@@ -171,11 +188,14 @@ function init() {
     // Display all uploads
     uploads.on("value", function(snap) {
         var data = "";
+        var deleteData = "";
         snap.forEach(function(child) {
             data += '<li><i class="glyphicon glyphicon-unchecked"></i><span><a target="_blank" href="'+ child.val().url +'">' + child.val().name +'</a></span></div></li>';
+            deleteData += '<li><i class="glyphicon glyphicon-briefcase"></i><span>' + child.val().name + '</span><div class="info"><a class="doc button" data-key=' + child.key + '>Delete</div></a></li>';
         });
         
         $("#documents-list").html(data);
+        $("#upload-list-delete").html(deleteData);
     });
     
     // Display all jobs
@@ -184,7 +204,7 @@ function init() {
         var deleteData = "";
         snap.forEach(function(child) {
             data += '<div class="serviceBox2"><div class="service-icon"><i class="glyphicon glyphicon-briefcase"></i></div><h3 class="title">' + child.val().title + '</h3><p class="description">' + child.val().descriptions + '</p></div>';
-            deleteData += '<li><i class="glyphicon glyphicon-briefcase"></i><span>' + child.val().title + '</span><div class="info"><a class="job" data-key=' + child.key + '>Delete</div></a></li>';
+            deleteData += '<li><i class="glyphicon glyphicon-briefcase"></i><span>' + child.val().title + '</span><div class="info"><a class="job button" data-key=' + child.key + '>Delete</div></a></li>';
         });
         
         $("#jobs-list").html(data);

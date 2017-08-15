@@ -539,7 +539,7 @@ a:focus, a:hover {
   font-weight: 300;
 }
 
-.main .view .content .list ul li .info .announcement, .main .view .content .list ul li .info .uploads, .main .view .content .list ul li .info .job {
+.main .view .content .list ul li .info .button {
   float: right;
   width: 100px;
   height: 30px;
@@ -780,7 +780,7 @@ progress::-webkit-progress-value {
 }
 
 .panel-blue .panel-heading { 
-  border:1px solid #4CAF50; 
+  border:1px solid #54b9cd; 
   background-color: #54b9cd; 
 }
 
