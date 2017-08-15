@@ -563,42 +563,45 @@ a:focus, a:hover {
   clear: both;
 }
 
-.serviceBox{
-  border: 2px solid #c0ca11;
-  padding: 30px;
-  margin: 60px 0 0 20px;
+
+.serviceBox .service-icon a{
+  border-bottom: 1px solid #d5d7d9;
+  display: inline-block;
+  width: 100%;
+  overflow-y: hidden;
   position: relative;
 }
-.serviceBox .service-icon{
-  width: 80px;
-  height: 80px;
-  line-height: 80px;
-  background: #fff;
-  border: 2px solid #c0ca11;
+
+.serviceBox .service-icon a > span{
+  width: 75px;
+  height:75px;
+  background: #FBC02D;
+  border-radius: 5px;
+  display: block;
   text-align: center;
-  font-size: 40px;
-  color: #c0ca11;
-  position: absolute;
-  top: -55px;
-  left: -20px;
-  transition: all 0.5s ease 0s;
-}
-.serviceBox:hover .service-icon{
-  color: #fff;
-  background: #c0ca11;
-  border: 2px solid #c0ca11;
-}
-.serviceBox .title{
-  font-size: 24px;
-  font-weight: 600;
-  color: #3e5482;
-  margin-bottom: 15px;
+  transform: rotate(60deg);
+  position: relative;
+  left:22px;
+  top:12px;
+  transition:all 300ms ease-in-out 0s;
 }
 
-.serviceBox .description{
+.serviceBox .service-icon a > span i{
+  font-size: 30px;
+  color:#fff;
+  transform: rotate(-60deg);
+  line-height: 72px;
+}
+.serviceBox .service-content h3{
+  color:#26282b;
+  text-transform: uppercase;
   font-size: 18px;
-  color: #7a696f;
-  line-height: 27px;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+.serviceBox .service-content p{
+  color:#212121;
+  line-height: 25px;
 }
 
 .file-upload {
@@ -761,5 +764,63 @@ progress::-webkit-progress-value {
   
   51%{ 
     opacity: 1;
+  }
+}
+
+#home-page-wrapper {
+  width: 100%;
+  padding: 0;
+}
+
+
+
+.panel-blue { 
+  border:1px solid #54b9cd;
+  color: white;
+}
+
+.panel-blue .panel-heading { 
+  border:1px solid #4CAF50; 
+  background-color: #54b9cd; 
+}
+
+
+.marr20{
+  margin-right: 20px;
+}
+.padd20{
+  padding:20px;
+}
+
+.auto-scroll {
+  height: 345px;
+  overflow-y: auto;
+}
+
+.auto-scroll::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+.auto-scroll::-webkit-scrollbar {
+	width: 6px;
+	background-color: #F5F5F5;
+}
+
+.auto-scroll::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+}
+
+@media (max-width: 768px){
+  .marr20 {
+    margin-right: 0px;
+  }
+}
+
+@media screen and (max-width: 990px){
+  .serviceBox{
+    margin-bottom: 25px;
   }
 }

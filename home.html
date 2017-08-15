@@ -55,8 +55,42 @@
           <div class="dash-hero">
           </div>
           
-          <div class="dash-content">
-            <div id="announcements-list"></div>
+          <div class="dash-content" id="home-page-wrapper">
+            <div class="container-fluid">
+              
+              <div class="row">
+                <div class="col-sm-8">
+                  <div class="panel panel-blue auto-scroll">
+                    <div class="panel-heading">
+                      <i class="glyphicon glyphicon-bullhorn"></i> Announcements
+                    </div>
+                    <div class="padd20" id="announcements-list"></div>
+                    <div id="line-chart" style="height:250px;"></div>
+                  </div>
+                </div> 
+                
+                <div class="col-sm-4">
+                  <div class="panel panel-blue">
+                    <div class="panel-heading">
+                      <i class="glyphicon glyphicon-send"></i> Employee Recognition Submission
+                    </div>
+                    <p class="padd20"></p>
+                    <div id="donut-chart" style="height:250px"></div>
+                  </div>
+                </div>            
+              </div>
+              
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="panel panel-blue">
+                    <div class="panel-heading">
+                      <i class="glyphicon glyphicon-calendar"></i> Agency Calendar
+                    </div>
+                    <div id="bar-chart" style="height:200px"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -203,14 +237,14 @@
               <div>
                 <input type="text" class="form-control margin15" id="title" placeholder="Title">
                 <textarea class="form-control margin15" rows="3" id="message" placeholder="Message"></textarea>
-                <button class="btn btn-default" id="announcements-submit">Submit</button>
+                <button class="btn btn-primary" id="announcements-submit">Submit</button>
               </div>
               
               <h3>New Job Posting</h3>
               <div>
                 <input type="text" class="form-control margin15" id="jobTitle" placeholder="Job Title">
                 <textarea class="form-control margin15" rows="3" id="jobDescription" placeholder="Job Description"></textarea>
-                <button class="btn btn-default" id="job-submit">Submit</button>
+                <button class="btn btn-primary" id="job-submit">Submit</button>
               </div>
               
             </div>

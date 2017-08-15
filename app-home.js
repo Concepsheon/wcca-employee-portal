@@ -52,6 +52,7 @@ function job() {
     $("#jobDescription").val("");
 }
 
+
 // File upload
 function uploadFile(e) {
     var bar = document.getElementById("progressbar");
@@ -136,21 +137,32 @@ function init() {
     
     
     // Display all announcements
-    announcements.on("child_added", function(snap) {
-        var snapData = "<div class='serviceBox'><div class='service-icon'><span class='glyphicon glyphicon-bullhorn'></span></div><h2 class='title'>" + snap.val().title + "</h2><p class='description'>" + snap.val().message + "</p></div>";
-        $("#announcements-list").append(snapData);
+    announcements.on("value", function(snap) {
+        var data = "";
+        snap.forEach(function(child) {
+            data += '<div class="serviceBox"><div class="service-icon"><a href="#"><span><i class="glyphicon glyphicon-bullhorn"></i></span></a></div><div class="service-content"><h3>' + child.val().title + '</h3><p>' + child.val().message + '</p></div></div>';
+        });
+        
+        $("#announcements-list").html(data);
     });
     
     // Display all uploads
-    uploads.on("child_added", function(snap) {
-        var data = '<li><i class="glyphicon glyphicon-unchecked"></i><span><a target="_blank" href="'+ snap.val().url +'">' + snap.val().name +'</a></span></div></li>';
-        $("#documents-list").append(data);
+    uploads.on("value", function(snap) {
+        var data = "";
+        snap.forEach(function(child) {
+            data += '<li><i class="glyphicon glyphicon-unchecked"></i><span><a target="_blank" href="'+ child.val().url +'">' + child.val().name +'</a></span></div></li>';
+        });
+        
+        $("#documents-list").html(data);
     });
     
     // Display all jobs
-    jobs.on("child_added", function(snap) {
-        var data = '<div class="serviceBox2"><div class="service-icon"><i class="glyphicon glyphicon-briefcase"></i></div><h3 class="title">' + snap.val().title + '</h3><p class="description">' + snap.val().descriptions + '</p></div>';
-        $("#jobs-list").append(data);
+    jobs.on("value", function(snap) {
+        var data = "";
+        snap.forEach(function(child) {
+            data = '<div class="serviceBox2"><div class="service-icon"><i class="glyphicon glyphicon-briefcase"></i></div><h3 class="title">' + child.val().title + '</h3><p class="description">' + child.val().descriptions + '</p></div>';
+        });
+        $("#jobs-list").html(data);
     });
 }
 
