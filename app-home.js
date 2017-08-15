@@ -52,6 +52,20 @@ function job() {
     $("#jobDescription").val("");
 }
 
+// Remove ref from db
+function remove() {
+    var key = $(this).data('key');
+    if(confirm('Are you sure?')) {
+        announcements.child(key).remove();
+    }
+}
+
+function removeJob() {
+    var key = $(this).data('key');
+    if(confirm('Are you sure?')) {
+        jobs.child(key).remove();
+    }
+}
 
 // File upload
 function uploadFile(e) {
@@ -137,13 +151,17 @@ function init() {
         $('.file-upload-input').trigger( 'click' );
     });
     
+    // Delete functionality
+    $(document).on('click', '.announcement', remove);
+    $(document).on('click', '.job', removeJob);
+    
     // Display all announcements
     announcements.on("value", function(snap) {
         var data = "";
         var deleteData = "";
         snap.forEach(function(child) {
             data += '<div class="serviceBox"><div class="service-icon"><a href="#"><span><i class="glyphicon glyphicon-bullhorn"></i></span></a></div><div class="service-content"><h3>' + child.val().title + '</h3><p>' + child.val().message + '</p></div></div>';
-            deleteData += '<li><i class="glyphicon glyphicon-bullhorn"></i><span>' + child.val().title + '</span><div class="info"><div id=' + child.key + ' class="button">Delete</div></div></li>';
+            deleteData += '<li><i class="glyphicon glyphicon-bullhorn"></i><span>' + child.val().title + '</span><div class="info"><a class="announcement" data-key=' + child.key + '>Delete</div></a></li>';
         });
         
         $("#announcements-list").html(data);
@@ -166,7 +184,7 @@ function init() {
         var deleteData = "";
         snap.forEach(function(child) {
             data += '<div class="serviceBox2"><div class="service-icon"><i class="glyphicon glyphicon-briefcase"></i></div><h3 class="title">' + child.val().title + '</h3><p class="description">' + child.val().descriptions + '</p></div>';
-            deleteData += '<li><i class="glyphicon glyphicon-briefcase"></i><span>' + child.val().title + '</span><div class="info"><div id=' + child.key + ' class="button">Delete</div></div></li>';
+            deleteData += '<li><i class="glyphicon glyphicon-briefcase"></i><span>' + child.val().title + '</span><div class="info"><a class="job" data-key=' + child.key + '>Delete</div></a></li>';
         });
         
         $("#jobs-list").html(data);

@@ -539,7 +539,7 @@ a:focus, a:hover {
   font-weight: 300;
 }
 
-.main .view .content .list ul li .info .button {
+.main .view .content .list ul li .info .announcement, .main .view .content .list ul li .info .uploads, .main .view .content .list ul li .info .job {
   float: right;
   width: 100px;
   height: 30px;
