@@ -56,7 +56,8 @@ function job() {
 // Add events
 function event() {
     var title = $("#eventTitle").val();
-    var date = $("#date").val();
+    var time = $("#time").val();
+    var date = $("#date").val().split("-").join(",");
     
     if(title == "" || date == "") {
         return false;
@@ -64,6 +65,7 @@ function event() {
     
     events.push({
         "title": title,
+        "time": time,
         "date": date,
     });
     
@@ -71,6 +73,7 @@ function event() {
     
     // Reset form
     $("#eventTitle").val("");
+    $("#time").val("");
     $("#date").val("");
 }
 
@@ -110,6 +113,18 @@ function truncate(str) {
     } else {
         return str;
     }
+}
+
+// Get date format
+function getMonth(event) {
+    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    var date = new Date(event);
+    return months[date.getMonth()];
+}
+
+function getDate(event) {
+    var date = new Date(event);
+    return (date.getDate());
 }
 
 // File upload
@@ -201,7 +216,7 @@ function init() {
     $(document).on('click', '.announcement', remove);
     $(document).on('click', '.job', removeJob);
     $(document).on('click', '.doc', deleteUpload);
-    $(document).on('click', '.event', deleteEvent);
+    $(document).on('click', '.events', deleteEvent);
     
     // Display all announcements
     announcements.on("value", function(snap) {
@@ -247,8 +262,8 @@ function init() {
         var data = "";
         var deleteData = "";
         snap.forEach(function(child) {
-            data += '';
-            deleteData += '<li><i class="glyphicon glyphicon-calendar"></i><span>' + truncate(child.val().title) + '</span><div class="info"><a class="event button" data-key=' + child.key + '>Delete</div></a></li>';
+            data += "<li><label class='date'><span class='weekday'>" + getMonth(child.val().date) + "</span><span class='day'>" + getDate(child.val().date) + "</span></label><h3>" + child.val().title + "</h3><p><span class='duration'>" + child.val().time + "</span></p></li>";
+            deleteData += '<li><i class="glyphicon glyphicon-calendar"></i><span>' + truncate(child.val().title) + '</span><div class="info"><a class="events button" data-key=' + child.key + '>Delete</div></a></li>';
         });
         
         $("#events-list").html(data);
