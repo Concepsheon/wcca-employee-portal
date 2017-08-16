@@ -2,6 +2,7 @@
 var announcements = firebase.database().ref("announcements");
 var uploads = firebase.database().ref("uploads");
 var jobs = firebase.database().ref("jobs");
+var events = firebase.database().ref("events");
 
 // Handle logout
 function handleSignOut() {
@@ -52,6 +53,27 @@ function job() {
     $("#jobDescription").val("");
 }
 
+// Add events
+function event() {
+    var title = $("#eventTitle").val();
+    var date = $("#date").val();
+    
+    if(title == "" || date == "") {
+        return false;
+    }
+    
+    events.push({
+        "title": title,
+        "date": date,
+    });
+    
+    $(".alert-success").show();
+    
+    // Reset form
+    $("#eventTitle").val("");
+    $("#date").val("");
+}
+
 // Remove ref from db
 function remove() {
     var key = $(this).data('key');
@@ -71,6 +93,13 @@ function deleteUpload() {
     var key = $(this).data('key');
     if(confirm('Are you sure?')) {
         uploads.child(key).remove();
+    }
+}
+
+function deleteEvent() {
+    var key = $(this).data('key');
+    if(confirm('Are you sure?')) {
+        events.child(key).remove();
     }
 }
 
@@ -155,6 +184,7 @@ function init() {
     
     $("#announcements-submit").click(announcement);
     $("#job-submit").click(job);
+    $("#event-submit").click(event);
     
     // Log out
     $("#logout").click(handleSignOut);
@@ -171,6 +201,7 @@ function init() {
     $(document).on('click', '.announcement', remove);
     $(document).on('click', '.job', removeJob);
     $(document).on('click', '.doc', deleteUpload);
+    $(document).on('click', '.event', deleteEvent);
     
     // Display all announcements
     announcements.on("value", function(snap) {
@@ -191,7 +222,7 @@ function init() {
         var deleteData = "";
         snap.forEach(function(child) {
             data += '<li><i class="glyphicon glyphicon-unchecked"></i><span><a target="_blank" href="'+ child.val().url +'">' + child.val().name +'</a></span></div></li>';
-            deleteData += '<li><i class="glyphicon glyphicon-briefcase"></i><span>' + child.val().name + '</span><div class="info"><a class="doc button" data-key=' + child.key + '>Delete</div></a></li>';
+            deleteData += '<li><i class="glyphicon glyphicon-briefcase"></i><span>' + truncate(child.val().name) + '</span><div class="info"><a class="doc button" data-key=' + child.key + '>Delete</div></a></li>';
         });
         
         $("#documents-list").html(data);
@@ -204,11 +235,24 @@ function init() {
         var deleteData = "";
         snap.forEach(function(child) {
             data += '<div class="serviceBox2"><div class="service-icon"><i class="glyphicon glyphicon-briefcase"></i></div><h3 class="title">' + child.val().title + '</h3><p class="description">' + child.val().descriptions + '</p></div>';
-            deleteData += '<li><i class="glyphicon glyphicon-briefcase"></i><span>' + child.val().title + '</span><div class="info"><a class="job button" data-key=' + child.key + '>Delete</div></a></li>';
+            deleteData += '<li><i class="glyphicon glyphicon-briefcase"></i><span>' + truncate(child.val().title) + '</span><div class="info"><a class="job button" data-key=' + child.key + '>Delete</div></a></li>';
         });
         
         $("#jobs-list").html(data);
         $("#job-list-delete").html(deleteData);
+    });
+    
+    // Display all events
+    events.on("value", function(snap) {
+        var data = "";
+        var deleteData = "";
+        snap.forEach(function(child) {
+            data += '';
+            deleteData += '<li><i class="glyphicon glyphicon-calendar"></i><span>' + truncate(child.val().title) + '</span><div class="info"><a class="event button" data-key=' + child.key + '>Delete</div></a></li>';
+        });
+        
+        $("#events-list").html(data);
+        $("#event-list-delete").html(deleteData);
     });
 }
 

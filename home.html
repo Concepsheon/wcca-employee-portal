@@ -86,6 +86,11 @@
                     <div class="panel-heading">
                       <i class="glyphicon glyphicon-calendar"></i> Agency Calendar
                     </div>
+                    <div class="content">
+                      <div class="list">
+                        <ul id="events-list"></ul>
+                      </div>
+                    </div>
                     <div id="bar-chart" style="height:200px"></div>
                   </div>
                 </div>
@@ -231,6 +236,18 @@
           </div>
             
             <div class="list">
+              <div class="title">Events</div>
+              
+              <!-- Announcement List -->
+              <ul id="event-list-delete"></ul>
+              
+              <h3>New Event</h3>
+              <div class="margin15">
+                <input type="text" class="form-control margin15" id="eventTitle" placeholder="Title">
+                <input type="date" class="form-control margin15" id="date"/>
+                <button class="btn btn-primary margin15" id="event-submit">Submit</button>
+              </div>
+              
               <div class="title">Announcements</div>
               
               <!-- Announcement List -->

@@ -489,6 +489,15 @@ a:focus, a:hover {
   padding: 10px;
 }
 
+.main .view .content2 {
+  position: absolute;
+  left: -4px;
+  top: 70px;
+  right: 6px;
+  bottom: 0px;
+  padding: 10px;
+}
+
 .main .view .content .list .title {
   width: 100%;
   padding: 10px;
@@ -776,11 +785,11 @@ progress::-webkit-progress-value {
 
 .panel-blue { 
   border:1px solid #54b9cd;
-  color: white;
 }
 
 .panel-blue .panel-heading { 
-  border:1px solid #54b9cd; 
+  border:1px solid #54b9cd;
+  color: white;
   background-color: #54b9cd; 
 }
 
@@ -812,6 +821,8 @@ progress::-webkit-progress-value {
 	border-radius: 10px;
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 }
+
+
 
 @media (max-width: 768px){
   .marr20 {
