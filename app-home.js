@@ -182,7 +182,7 @@ function init() {
                 if(user.uid === "ADer5kHfQXhWklAsh4JD7X4s60K2" || user.uid === "ENDok6TGTHRECmsVOMPPWr6mWMZ2") {
                     $(".admin-access").show();
                     $("#user-uid").text("HR")
-                } else if(user.uid === "fCfJltTxY6R4eyZj1YWeP408B172") {
+                } else if(user.uid === "Od8FGVE7mjSzbPJeaL1OtMZmLAi2") {
                     $("#user-uid").text("Admin");
                     $(".admin-access").show();
                 } else {
@@ -269,6 +269,7 @@ function init() {
         $("#events-list").html(data);
         $("#event-list-delete").html(deleteData);
     });
+    
 }
 
 window.onload = function() {
