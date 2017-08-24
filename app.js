@@ -10,16 +10,36 @@ function handleSignIn() {
         if(password !== "") {
             firebase.auth().signInWithEmailAndPassword(email, password)
             .catch(function(err){
-                $(".alert-danger").removeClass("hidden");
+                toastr.error('Login failed. Wrong email or password.');
                 console.log('Login failed ' + err.message);
             });
         }
         
     } else {
-        alert("Please enter a valid email address");
+       toastr.error('Please enter a valid email address');
     }
+}
+
+function handleUserRegister() {
     
-    $(".alert-danger").addClass("hidden");
+    // Validate email field is in xxx@xxx.com format
+    var regex = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
+    
+    var email = $("#emailRegister").val();
+    var password = $("#passwordRegister").val();
+    
+    if(email !== "" && regex.test(email)) {
+        if(password !== "") {
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+            .catch(function(err){
+                toastr.error('Login failed. Email is already in use.');
+                console.log('Failed to register user ' + err.message);
+            });
+        }
+        
+    } else {
+        toastr.error('Please enter a valid email address');
+    }
 }
 
 function init() {
@@ -34,6 +54,7 @@ function init() {
     });
     
     $("#login").click(handleSignIn);
+    $("#register").click(handleUserRegister);
 }
 
 window.onload = function() {

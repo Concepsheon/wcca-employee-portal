@@ -7,7 +7,7 @@ var events = firebase.database().ref("events");
 // Handle logout
 function handleSignOut() {
     firebase.auth().signOut();
-    console.log("Successfully logged out");
+    toastr.success('Successfully logged out');
     window.location = "index.html";
 }
 
@@ -25,7 +25,7 @@ function announcement() {
         "message": message
     });
     
-    $(".alert-success").show();
+    toastr.success('Successfully added');
     
     $("#title").val("");
     $("#message").val("");
@@ -46,7 +46,7 @@ function job() {
         "descriptions": description,
     });
     
-    $(".alert-success").show();
+    toastr.success('Successfully added');
     
     // Reset form
     $("#jobTitle").val("");
@@ -69,7 +69,7 @@ function event() {
         "date": date,
     });
     
-    $(".alert-success").show();
+    toastr.success('Successfully added');
     
     // Reset form
     $("#eventTitle").val("");
@@ -146,7 +146,7 @@ function uploadFile(e) {
       },
       
       function error(err) {
-        alert("Failed to upload file " + err.message);
+        toastr.error("Failed to upload file " + err.message);
         console.log(err.message);
       },
       
@@ -166,7 +166,7 @@ function uploadFile(e) {
         updates['/uploads/'+ uniqueKey] = uploadData;
         firebase.database().ref().update(updates);
         
-        console.log("Upload Complete " + file.name);
+        toastr.success("Upload Complete " + file.name);
       }
     );
 }
@@ -181,10 +181,12 @@ function init() {
             if(user.uid) {
                 if(user.uid === "ADer5kHfQXhWklAsh4JD7X4s60K2" || user.uid === "ENDok6TGTHRECmsVOMPPWr6mWMZ2") {
                     $(".admin-access").show();
-                    $("#user-uid").text("HR")
+                    $("#user-uid").text("HR");
+                    //$(".edit").attr('contenteditable', 'true');
                 } else if(user.uid === "fCfJltTxY6R4eyZj1YWeP408B172" || user.uid === "Od8FGVE7mjSzbPJeaL1OtMZmLAi2") {
                     $("#user-uid").text("Admin");
                     $(".admin-access").show();
+                    //$(".edit").attr('contenteditable', 'true');
                 } else {
                     $("#user-uid").text("ID: " + user.uid.slice(0, 20));
                     $(".admin-access").hide();
