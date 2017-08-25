@@ -5,10 +5,6 @@ body {
   font-size: 14px;
 }
 
-.editable {
-  border-top: 4px solid #ff9624;
-}
-
 #login-container {
   position: fixed;
   left: 0;
@@ -394,13 +390,9 @@ a:focus, a:hover {
   cursor: pointer;
   list-style: none;
   margin: 15px 0px;
-  padding: 5px 0px;
   font-weight: 600;
   margin-right: 30px;
   padding-left: 10px;
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  border-radius: 4px;
   transition: 0.25s all;
 }
 
@@ -413,7 +405,7 @@ a:focus, a:hover {
   text-decoration: none;
 }
 
-.main .nav .menu ul li.active {
+.main .nav .menu ul li.active a {
   color: #79BC46;
 }
 
@@ -566,10 +558,6 @@ a:focus, a:hover {
 
 .main .view .content .list ul li .info .button.green {
   background-color: #85C157;
-}
-
-.clear {
-  clear: both;
 }
 
 
@@ -797,14 +785,15 @@ progress::-webkit-progress-value {
 .marr20{
   margin-right: 20px;
 }
+
 .padd20{
   padding:20px;
 }
 
 .auto-scroll {
-  height: 345px;
   overflow-y: auto;
 }
+
 
 .auto-scroll::-webkit-scrollbar-track {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
@@ -832,11 +821,9 @@ progress::-webkit-progress-value {
 #events-list li {
   overflow: hidden;
   margin: 4px -20px;
-  padding: 10px;
+  padding: 5px;
   color: #637d99;
   background-color: #ffffff;
-  border: 2px solid #ffffff;
-  border-radius: 3px;
 }
 
 #events-list li .date {

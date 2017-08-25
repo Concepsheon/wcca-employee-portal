@@ -60,34 +60,50 @@
             <div class="container-fluid">
               
               <div class="row">
-                <div class="col-sm-8">
+                <div class="col-sm-8 col-md-8 col-lg-8">
                   <div class="panel panel-blue">
                     <div class="panel-heading">
                       <i class="glyphicon glyphicon-bullhorn"></i> Announcements
                     </div>
-                    <div class="padd20 auto-scroll" id="announcements-list"></div>
+                    <div class="padd20 auto-scroll" id="announcements-list" style="height: 345px;"></div>
                   </div>
                 </div> 
                 
-                <div class="col-sm-4">
-                  <div class="panel panel-blue">
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                  <div class="panel panel-blue" style="overflow: hidden;">
                     <div class="panel-heading">
-                      <i class="glyphicon glyphicon-send"></i> Employee Recognition Submission
+                      <i class="glyphicon glyphicon-retweet"></i> WCCA Twitter Feed
                     </div>
-                    <div class="spacer" style="height: 345px;"></div>
+                    <div>
+                      <a class="twitter-timeline" data-width="300" data-height="340" data-chrome="noheader nofooter noscrollbar noborders" href="https://twitter.com/WCCAmn">Tweets by WCCAmn</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </div>
                   </div>
                 </div>            
               </div>
               
               <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-8 col-md-8 col-lg-8">
                   <div class="panel panel-blue">
                     <div class="panel-heading">
                       <i class="glyphicon glyphicon-calendar"></i> Agency Calendar
                     </div>
-                    <ul id="events-list"></ul>
+                      <div class="auto-scroll" style='height: 200px;'>
+                        <ul id="events-list"></ul>
+                      </div>
                   </div>
                 </div>
+                
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                  <div class="panel panel-blue">
+                    <div class="panel-heading">
+                      <i class="glyphicon glyphicon-send"></i> Employee Recognition
+                    </div>
+                    <div class='padd20' style="height: 90px;">
+                      <a class='btn btn-default' href="javascript:void( window.open( 'https://form.jotform.us/72357443384158', 'blank', 'scrollbars=yes, toolbar=no, width=700, height=500' ) ) "> New Employee Recognition <br> Submission</a>
+                    </div>
+                  </div>
+                </div>
+                
               </div>
             </div>
           </div>
