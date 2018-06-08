@@ -4,6 +4,25 @@ var uploads = firebase.database().ref("uploads");
 var jobs = firebase.database().ref("jobs");
 var events = firebase.database().ref("events");
 
+// Add new menu link
+function addMenuLink() {
+    var newLinkDescription = $("#newLinkDescription").val() != "" ? $("#newLinkDescription").val() : "This page is empty. Go to admin settings to add content to this page."
+    var uniqueKey = firebase.database().ref('posts/').push().key;
+        
+    var updates = {};
+        
+    var newLink = {
+        post: newLinkDescription,
+        title: $("#newLinkTitle").val(),
+        type: 'page'
+    };
+        
+    updates['/posts/'+ uniqueKey] = newLink;
+    firebase.database().ref().update(updates);
+        
+    toastr.success("New meu link successfully added " + newLink.title);
+}
+
 // Handle logout
 function handleSignOut() {
     firebase.auth().signOut();
@@ -202,6 +221,7 @@ function init() {
     $("#announcements-submit").click(announcement);
     $("#job-submit").click(job);
     $("#event-submit").click(event);
+    $("#link-submit").click(addMenuLink);
     
     // Log out
     $("#logout").click(handleSignOut);
